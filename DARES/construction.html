@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Construction bookkeeping automation: Job costing, WIP reports, subcontractor tracking, and 1099 management for contractors.">
+    <title>Construction Bookkeeping Software | DARES</title>
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet" media="screen">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #003d82;
+            --dark-blue: #001f3d;
+            --slate-gray: #4a5568;
+            --light-gray: #f7fafc;
+            --accent-blue: #0066cc;
+        }
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Lora', serif;
+            font-weight: 600;
+        }
+        
+        body {
+            color: #2d3748;
+        }
+        
+        .navbar-wrapper {
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 1rem 0;
+        }
+        
+        .nav-link {
+            color: var(--slate-gray) !important;
+            margin-left: 2rem;
+            font-weight: 500;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-blue) !important;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a 0%, var(--primary-blue) 100%);
+            color: white;
+            padding: 80px 0;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .btn-primary-cta {
+            background: var(--accent-blue);
+            color: white;
+            padding: 14px 35px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary-cta:hover {
+            background: #0052a3;
+            transform: translateY(-2px);
+        }
+        
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-alt {
+            background: var(--light-gray);
+        }
+        
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+        
+        .section-intro {
+            font-size: 1.1rem;
+            color: var(--slate-gray);
+            margin-bottom: 3rem;
+        }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .feature-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+        
+        .feature-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary-blue);
+        }
+        
+        .feature-item p {
+            color: var(--slate-gray);
+            line-height: 1.6;
+        }
+        
+        .icon-lg {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            border-radius: 12px;
+            margin: 4rem 0;
+        }
+        
+        .cta-section h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent-blue);
+            margin-bottom: 2rem;
+        }
+        
+        .testimonial p {
+            font-size: 1.05rem;
+            color: var(--slate-gray);
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+        
+        footer {
+            background: var(--primary-blue);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+        
+        .footer-link:hover {
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-wrapper navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../"><strong style="color: var(--primary-blue);">DARES</strong></a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="nav-link" href="../#home">Home</a></li>
+                    <li><a class="nav-link" href="construction.html">For Contractors</a></li>
+                    <li><a class="nav-link" href="property-management.html">For Property Managers</a></li>
+                    <li><a class="nav-link" href="how-it-works.html">How It Works</a></li>
+                    <li><a class="nav-link" href="pricing.html">Pricing</a></li>
+                    <li><a class="nav-link" href="login.html">Portal</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="hero">
+        <div class="container">
+            <h1>Stop Guessing About Project Profit</h1>
+            <p>Real-time job costing, automated WIP reports, and subcontractor tracking built for contractors.</p>
+            <a href="#audit" class="btn-primary-cta">Get Free Automation Audit</a>
+        </div>
+    </div>
+
+    <!-- Job Costing -->
+    <div class="section">
+        <div class="container">
+            <h2>Track Every Dollar By Project</h2>
+            <p class="section-intro">DARES automates job costing so you always know which projects are making money—and which aren't.</p>
+            
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="icon-lg">📊</div>
+                    <h4>Real-Time Job Costing</h4>
+                    <p>Categorize materials, labor, and subcontractor costs automatically. See profitability by project, trade, or phase.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-lg">⚠️</div>
+                    <h4>Cost Overrun Alerts</h4>
+                    <p>Get instant alerts when a project is trending over budget. Catch problems before they become disasters.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-lg">🎯</div>
+                    <h4>Margin Analysis</h4>
+                    <p>Understand gross profit by project type, customer, or service line. Make data-driven pricing decisions.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 style="color: var(--primary-blue); margin-bottom: 1.5rem;">What gets tracked automatically:</h3>
+                    <ul style="font-size: 1.05rem; line-height: 2;">
+                        <li>✓ Material purchases and inventory</li>
+                        <li>✓ Labor costs and time tracking</li>
+                        <li>✓ Subcontractor invoices</li>
+                        <li>✓ Equipment and vehicle expenses</li>
+                        <li>✓ Job-specific overhead allocation</li>
+                        <li>✓ Change order reconciliation</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <img src="images/profit.png" class="img-responsive" alt="Job Costing Dashboard">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WIP Reports -->
+    <div class="section section-alt">
+        <div class="container">
+            <h2>WIP Reports That Actually Make Sense</h2>
+            <p class="section-intro">Know exactly where you stand with every project—before your accountant tells you three months later.</p>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="images/office.png" class="img-responsive" alt="WIP Dashboard">
+                </div>
+                <div class="col-md-6">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 1.5rem; font-size: 1.3rem;">Understand Your Financial Position in Real-Time:</h4>
+                    <ul style="font-size: 1.05rem; line-height: 2;">
+                        <li><strong>% Complete by Project</strong> – How far along are you?</li>
+                        <li><strong>Overbilled/Underbilled Amounts</strong> – Are you ahead or behind on revenue recognition?</li>
+                        <li><strong>Profit Recognition</strong> – How much profit has been earned (not just invoiced)?</li>
+                        <li><strong>Cash Flow Projections</strong> – When will you get paid?</li>
+                        <li><strong>Multi-Project Profitability</strong> – See all jobs in one dashboard</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Subcontractor Management -->
+    <div class="section">
+        <div class="container">
+            <h2>Automated Subcontractor Management</h2>
+            <p class="section-intro">Streamline vendor payments, compliance, and reporting with zero manual work.</p>
+            
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="icon-lg">💰</div>
+                    <h4>One-Click Payments</h4>
+                    <p>Pay subcontractors and vendors instantly through Bill.com. DARES automatically codes each payment to the correct job and cost category.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-lg">📋</div>
+                    <h4>1099 Management</h4>
+                    <p>Track all payments automatically. Generate 1099s with a single click at year-end—no data entry required.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-lg">🔗</div>
+                    <h4>Certificate of Insurance</h4>
+                    <p>Automated COI tracking and expiration alerts. Never lose track of vendor compliance again.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-lg">✅</div>
+                    <h4>Lien Waiver Compliance</h4>
+                    <p>Track which subcontractors have signed lien waivers. Automated reminders before payment release.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-lg">📊</div>
+                    <h4>Vendor Performance</h4>
+                    <p>See which vendors are most reliable, cheapest, and most frequently used across all projects.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-lg">📞</div>
+                    <h4>Payment Reconciliation</h4>
+                    <p>Match payments to invoices automatically. Flag discrepancies before they become problems.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payroll -->
+    <div class="section section-alt">
+        <div class="container">
+            <h2>Payroll Built for Construction</h2>
+            <p class="section-intro">Automated payroll processing with job costing integration for construction crews.</p>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 1.5rem;">What's automated:</h4>
+                    <ul style="font-size: 1.05rem; line-height: 2.2;">
+                        <li>✓ Timesheet to job costing integration</li>
+                        <li>✓ Tax calculations and deposits</li>
+                        <li>✓ Direct deposit processing</li>
+                        <li>✓ Workers' compensation premium allocation</li>
+                        <li>✓ Monthly payroll reports</li>
+                        <li>✓ Year-end W-2 generation</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <img src="images/business.png" class="img-responsive" alt="Payroll Management">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="container">
+        <div class="cta-section">
+            <h3>See How Much Time & Money You Can Save</h3>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                Our free automation audit analyzes your current processes and shows you exact ROI.
+            </p>
+            <a href="#audit" class="btn-primary-cta" style="background: white; color: var(--primary-blue);">Schedule 20-Minute Call</a>
+        </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="section section-alt">
+        <div class="container">
+            <h2>What Contractors Are Saying</h2>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="testimonial">
+                        <p>"DARES gave us visibility into job profitability we never had before. We discovered three projects we thought were profitable were actually losing money. Changed how we price jobs."</p>
+                        <div class="testimonial-author">— Mike T., General Contractor, 15 projects/year</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="testimonial">
+                        <p>"Manual payroll used to take me 8 hours a month. Now DARES handles it in 30 minutes. That's 7.5 hours I get back to actually run my business."</p>
+                        <div class="testimonial-author">— Sarah K., Commercial Builder</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="testimonial">
+                        <p>"The 1099 and COI tracking alone are worth it. Year-end used to be a nightmare. Now it's automated and accurate."</p>
+                        <div class="testimonial-author">— James R., Subcontractor Network Manager</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="testimonial">
+                        <p>"We went from wondering where money was going to having complete visibility. Our profit margins are now 3% higher because we caught pricing problems."</p>
+                        <div class="testimonial-author">— David L., Residential Construction</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resources -->
+    <div class="section">
+        <div class="container">
+            <h2 style="text-align: center;">Free Construction Resources</h2>
+            <div class="feature-list">
+                <div class="feature-item" style="cursor: pointer;">
+                    <div class="icon-lg">📋</div>
+                    <h4>Job Costing Checklist</h4>
+                    <p>A comprehensive checklist of every expense category construction companies should track by project.</p>
+                    <p style="color: var(--accent-blue); font-weight: 600; margin-top: 1rem;">Download Now →</p>
+                </div>
+                <div class="feature-item" style="cursor: pointer;">
+                    <div class="icon-lg">📊</div>
+                    <h4>WIP Reporting Guide</h4>
+                    <p>Learn how to read WIP reports like a pro and use them to make better business decisions.</p>
+                    <p style="color: var(--accent-blue); font-weight: 600; margin-top: 1rem;">Download Now →</p>
+                </div>
+                <div class="feature-item" style="cursor: pointer;">
+                    <div class="icon-lg">💡</div>
+                    <h4>Subcontractor Tracking Template</h4>
+                    <p>Spreadsheet template for tracking subcontractor costs, compliance, and performance metrics.</p>
+                    <p style="color: var(--accent-blue); font-weight: 600; margin-top: 1rem;">Download Now →</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="construction.html" class="footer-link">For Contractors</a></li>
+                        <li><a href="property-management.html" class="footer-link">For Property Managers</a></li>
+                        <li><a href="how-it-works.html" class="footer-link">How It Works</a></li>
+                        <li><a href="pricing.html" class="footer-link">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#" class="footer-link">About Us</a></li>
+                        <li><a href="#" class="footer-link">Blog</a></li>
+                        <li><a href="#" class="footer-link">Careers</a></li>
+                        <li><a href="#" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#" class="footer-link">Job Costing Checklist</a></li>
+                        <li><a href="#" class="footer-link">WIP Guide</a></li>
+                        <li><a href="#" class="footer-link">Docs</a></li>
+                        <li><a href="login.html" class="footer-link">Portal</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#" class="footer-link">Privacy</a></li>
+                        <li><a href="#" class="footer-link">Terms</a></li>
+                        <li><a href="#" class="footer-link">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.2); margin-top: 2rem; padding-top: 2rem; text-align: center;">
+                <p>&copy; 2026 DARES. Financial Clarity Powered by Automation + Human Ingenuity</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+</body>
+</html>

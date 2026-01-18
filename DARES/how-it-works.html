@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="How DARES works: Data sync, AI categorization, expert review, and strategy calls for automated bookkeeping.">
+    <title>How DARES Works | Automation + Human Expertise</title>
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet" media="screen">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #003d82;
+            --dark-blue: #001f3d;
+            --slate-gray: #4a5568;
+            --light-gray: #f7fafc;
+            --accent-blue: #0066cc;
+        }
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Lora', serif;
+            font-weight: 600;
+        }
+        
+        body {
+            color: #2d3748;
+        }
+        
+        .navbar-wrapper {
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 1rem 0;
+        }
+        
+        .nav-link {
+            color: var(--slate-gray) !important;
+            margin-left: 2rem;
+            font-weight: 500;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-blue) !important;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            color: white;
+            padding: 80px 0;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-alt {
+            background: var(--light-gray);
+        }
+        
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-blue);
+            text-align: center;
+        }
+        
+        .process-step {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--accent-blue);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+        
+        .step-number {
+            display: inline-block;
+            background: var(--accent-blue);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .process-step h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+        
+        .process-step p {
+            font-size: 1.05rem;
+            color: var(--slate-gray);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .process-step ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .process-step li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            color: var(--slate-gray);
+            font-size: 1rem;
+        }
+        
+        .process-step li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--accent-blue);
+        }
+        
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+        }
+        
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        
+        .timeline-item .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid var(--accent-blue);
+            border-radius: 50%;
+            top: 10px;
+            z-index: 10;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-item .timeline-dot {
+                left: 20px;
+            }
+        }
+        
+        .timeline-content {
+            margin-left: auto;
+            margin-right: 0;
+            width: 45%;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 60px;
+                margin-right: 0;
+            }
+        }
+        
+        .timeline-content h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+        
+        .comparison-table th {
+            background: var(--primary-blue);
+            color: white;
+            padding: 1.5rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .comparison-table td {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .check {
+            color: #10b981;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        .cross {
+            color: #ef4444;
+            font-size: 1.3rem;
+        }
+        
+        .btn-primary-cta {
+            background: var(--accent-blue);
+            color: white;
+            padding: 14px 35px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary-cta:hover {
+            background: #0052a3;
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            background: var(--primary-blue);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-wrapper navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../"><strong style="color: var(--primary-blue);">DARES</strong></a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="nav-link" href="../#home">Home</a></li>
+                    <li><a class="nav-link" href="construction.html">For Contractors</a></li>
+                    <li><a class="nav-link" href="property-management.html">For Property Managers</a></li>
+                    <li><a class="nav-link" href="how-it-works.html">How It Works</a></li>
+                    <li><a class="nav-link" href="pricing.html">Pricing</a></li>
+                    <li><a class="nav-link" href="login.html">Portal</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="hero">
+        <div class="container">
+            <h1>The Best of Automation + Human Expertise</h1>
+            <p style="font-size: 1.2rem; color: rgba(255,255,255,0.9);">
+                Our 4-step process combines cutting-edge AI with real human accountants to give you accuracy you can trust.
+            </p>
+        </div>
+    </div>
+
+    <!-- The Process -->
+    <div class="section">
+        <div class="container">
+            <h2>How The Magic Happens</h2>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h3>Data Sync</h3>
+                        <p><strong>We connect to your financial ecosystem in seconds.</strong></p>
+                        <p>DARES securely integrates with your bank, QuickBooks, Xero, Bill.com, Procore, AppFolio, or any accounting software you use. Data flows continuously—no manual uploads needed.</p>
+                        <ul>
+                            <li>Bank transactions</li>
+                            <li>Invoice data from accounting software</li>
+                            <li>Project/job cost information</li>
+                            <li>Tenant accounting (if applicable)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h3>AI Categorization</h3>
+                        <p><strong>Machine learning handles 80% of data entry automatically.</strong></p>
+                        <p>Our proprietary AI has learned from thousands of construction and property management transactions. It instantly categorizes expenses, matches deposits to ledgers, and codes transactions to the right jobs or units.</p>
+                        <ul>
+                            <li>Automatic expense categorization</li>
+                            <li>Job/project coding</li>
+                            <li>Rent posting to tenant accounts</li>
+                            <li>Vendor payment matching</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h3>Expert Review</h3>
+                        <p><strong>Real accountants verify every transaction for 100% accuracy.</strong></p>
+                        <p>Every categorization flagged by our AI review team is reviewed by a human accountant. We catch edge cases, verify compliance, and ensure your books are audit-ready. Your data is never trusted to AI alone.</p>
+                        <ul>
+                            <li>Manual review of all transactions</li>
+                            <li>Compliance verification</li>
+                            <li>Audit preparation</li>
+                            <li>Tax optimization recommendations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h3>Monthly Strategy Call</h3>
+                        <p><strong>We don't just do accounting—we help you grow.</strong></p>
+                        <p>Every month, your dedicated accountant reviews your financial data and shares insights: which projects are most profitable, where you're spending too much, tax optimization strategies, and opportunities to improve margins.</p>
+                        <ul>
+                            <li>Profitability analysis</li>
+                            <li>Tax planning</li>
+                            <li>Cash flow projections</li>
+                            <li>Growth recommendations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why This Approach -->
+    <div class="section section-alt">
+        <div class="container">
+            <h2>Why Automation + Human Expertise</h2>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th style="text-align: center;">Manual Bookkeeping</th>
+                        <th style="text-align: center;">Automation Only</th>
+                        <th style="text-align: center;">DARES (Automation + Expert)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Speed</td>
+                        <td style="text-align: center;">⏱️ Weeks</td>
+                        <td style="text-align: center;">⚡ Hours</td>
+                        <td style="text-align: center;">✨ Days</td>
+                    </tr>
+                    <tr>
+                        <td>Cost</td>
+                        <td style="text-align: center;">$$ High</td>
+                        <td style="text-align: center;">$ Low</td>
+                        <td style="text-align: center;">$$ Reasonable</td>
+                    </tr>
+                    <tr>
+                        <td>Accuracy</td>
+                        <td style="text-align: center;">85%</td>
+                        <td style="text-align: center;">92%</td>
+                        <td style="text-align: center;"><span class="check">99%+</span></td>
+                    </tr>
+                    <tr>
+                        <td>Human Oversight</td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                        <td style="text-align: center;"><span class="cross">✗</span></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Tax Optimization</td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                        <td style="text-align: center;"><span class="cross">✗</span></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Strategic Advice</td>
+                        <td style="text-align: center;"><span class="check">✓</span> (if good CPA)</td>
+                        <td style="text-align: center;"><span class="cross">✗</span></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Real-Time Dashboards</td>
+                        <td style="text-align: center;"><span class="cross">✗</span></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Compliance Audit-Ready</td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                        <td style="text-align: center;"><span class="cross">✗</span></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Timeline View -->
+    <div class="section">
+        <div class="container">
+            <h2>Your Timeline to Financial Clarity</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Week 1: Setup & Onboarding</h4>
+                        <p>We secure your bank and accounting software connections. You'll have a dedicated accountant assigned. First dashboard live.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Weeks 2-3: Historical Sync</h4>
+                        <p>AI categorizes your last 3-12 months of transactions. Our review team audits everything for accuracy and compliance.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Week 4: First Strategy Call</h4>
+                        <p>Review your numbers with your accountant. Identify opportunities, tax optimizations, and growth strategies specific to your business.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Ongoing: Automated Monthly Bookkeeping</h4>
+                        <p>Every month: transactions auto-categorized, reviewed by human expert, dashboards updated, strategy call scheduled.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- What's Included -->
+    <div class="section section-alt">
+        <div class="container">
+            <h2>Everything Included in Every Plan</h2>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 style="color: var(--primary-blue); margin-bottom: 1.5rem;">Core Services</h3>
+                    <ul style="font-size: 1.05rem; line-height: 2.2;">
+                        <li>✓ Daily bank transaction categorization</li>
+                        <li>✓ Monthly expert review & reconciliation</li>
+                        <li>✓ Real-time dashboards & reporting</li>
+                        <li>✓ Monthly strategy call with your accountant</li>
+                        <li>✓ 1099 and payroll processing</li>
+                        <li>✓ Tax optimization consultation</li>
+                        <li>✓ Year-end audit preparation</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h3 style="color: var(--primary-blue); margin-bottom: 1.5rem;">Integrations</h3>
+                    <ul style="font-size: 1.05rem; line-height: 2.2;">
+                        <li>✓ QuickBooks Online & Desktop</li>
+                        <li>✓ Xero</li>
+                        <li>✓ Bill.com</li>
+                        <li>✓ Procore</li>
+                        <li>✓ AppFolio</li>
+                        <li>✓ Your bank (any major US bank)</li>
+                        <li>✓ Custom integrations available</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="container" style="margin-top: 5rem;">
+        <div style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%); color: white; padding: 3rem; border-radius: 12px; text-align: center;">
+            <h3 style="font-size: 2rem; margin-bottom: 1rem;">Ready to Experience the Difference?</h3>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                Schedule a free 20-minute call to see how DARES automation + expertise works for your business.
+            </p>
+            <a href="../#audit" class="btn-primary-cta" style="background: white; color: var(--primary-blue);">Schedule Free Consultation</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="construction.html" class="footer-link">For Contractors</a></li>
+                        <li><a href="property-management.html" class="footer-link">For Property Managers</a></li>
+                        <li><a href="how-it-works.html" class="footer-link">How It Works</a></li>
+                        <li><a href="pricing.html" class="footer-link">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#" class="footer-link">About Us</a></li>
+                        <li><a href="#" class="footer-link">Blog</a></li>
+                        <li><a href="#" class="footer-link">Careers</a></li>
+                        <li><a href="#" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#" class="footer-link">Documentation</a></li>
+                        <li><a href="#" class="footer-link">Support</a></li>
+                        <li><a href="#" class="footer-link">Blog</a></li>
+                        <li><a href="login.html" class="footer-link">Portal</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#" class="footer-link">Privacy</a></li>
+                        <li><a href="#" class="footer-link">Terms</a></li>
+                        <li><a href="#" class="footer-link">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.2); margin-top: 2rem; padding-top: 2rem; text-align: center;">
+                <p>&copy; 2026 DARES. Financial Clarity Powered by Automation + Human Ingenuity</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+</body>
+</html>

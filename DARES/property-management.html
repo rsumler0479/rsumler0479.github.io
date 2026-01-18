@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Property management bookkeeping software: Unit-level reporting, trust account compliance, and automated rent accounting.">
+    <title>Property Management Bookkeeping | DARES</title>
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet" media="screen">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #003d82;
+            --dark-blue: #001f3d;
+            --slate-gray: #4a5568;
+            --light-gray: #f7fafc;
+            --accent-blue: #0066cc;
+        }
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Lora', serif;
+            font-weight: 600;
+        }
+        
+        body {
+            color: #2d3748;
+        }
+        
+        .navbar-wrapper {
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 1rem 0;
+        }
+        
+        .nav-link {
+            color: var(--slate-gray) !important;
+            margin-left: 2rem;
+            font-weight: 500;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-blue) !important;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #047857 0%, #059669 100%);
+            color: white;
+            padding: 80px 0;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .btn-primary-cta {
+            background: var(--accent-blue);
+            color: white;
+            padding: 14px 35px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary-cta:hover {
+            background: #0052a3;
+            transform: translateY(-2px);
+        }
+        
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-alt {
+            background: var(--light-gray);
+        }
+        
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+        
+        .section-intro {
+            font-size: 1.1rem;
+            color: var(--slate-gray);
+            margin-bottom: 3rem;
+        }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .feature-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+        
+        .feature-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary-blue);
+        }
+        
+        .feature-item p {
+            color: var(--slate-gray);
+            line-height: 1.6;
+        }
+        
+        .icon-lg {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            border-radius: 12px;
+            margin: 4rem 0;
+        }
+        
+        .cta-section h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent-blue);
+            margin-bottom: 2rem;
+        }
+        
+        .testimonial p {
+            font-size: 1.05rem;
+            color: var(--slate-gray);
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+        
+        footer {
+            background: var(--primary-blue);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+        
+        .footer-link:hover {
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-wrapper navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../"><strong style="color: var(--primary-blue);">DARES</strong></a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="nav-link" href="../#home">Home</a></li>
+                    <li><a class="nav-link" href="construction.html">For Contractors</a></li>
+                    <li><a class="nav-link" href="property-management.html">For Property Managers</a></li>
+                    <li><a class="nav-link" href="how-it-works.html">How It Works</a></li>
+                    <li><a class="nav-link" href="pricing.html">Pricing</a></li>
+                    <li><a class="nav-link" href="login.html">Portal</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="hero">
+        <div class="container">
+            <h1>Compliance & Clarity at Every Property</h1>
+            <p>Unit-level reporting, trust account reconciliation, and automated rent accounting built for property managers.</p>
+            <a href="#audit" class="btn-primary-cta">Get Free Automation Audit</a>
+        </div>
+    </div>
+
+    <!-- Unit-Level Reporting -->
+    <div class="section">
+        <div class="container">
+            <h2>Financial Statements for Every Door</h2>
+            <p class="section-intro">DARES generates unit-level P&Ls automatically, so you and your owners know exactly how each property is performing.</p>
+            
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="icon-lg">🏠</div>
+                    <h4>Unit P&Ls</h4>
+                    <p>Income and expense statements for every apartment, house, or commercial space. Updated monthly automatically.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-lg">🏢</div>
+                    <h4>Property-Wide Reports</h4>
+                    <p>Consolidated statements showing performance across all units. Compare properties and identify trends.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-lg">📊</div>
+                    <h4>Owner Distribution Reports</h4>
+                    <p>Clear, audit-ready statements showing profit/loss and distributions for each property owner.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 style="color: var(--primary-blue); margin-bottom: 1.5rem;">What gets categorized automatically:</h3>
+                    <ul style="font-size: 1.05rem; line-height: 2.2;">
+                        <li>✓ Rent deposits by tenant/unit</li>
+                        <li>✓ Maintenance and repair expenses</li>
+                        <li>✓ Property taxes and insurance</li>
+                        <li>✓ HOA assessments and utilities</li>
+                        <li>✓ Management fees</li>
+                        <li>✓ Capital improvements vs. repairs</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <img src="images/profit.png" class="img-responsive" alt="Unit-Level P&L Dashboard">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trust Account Compliance -->
+    <div class="section section-alt">
+        <div class="container">
+            <h2>Trust Account Reconciliation on Autopilot</h2>
+            <p class="section-intro">Stay 100% compliant with state laws. DARES handles reconciliation, reporting, and audit preparation.</p>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="images/office.png" class="img-responsive" alt="Trust Account Dashboard">
+                </div>
+                <div class="col-md-6">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 1.5rem; font-size: 1.3rem;">What's automated:</h4>
+                    <ul style="font-size: 1.05rem; line-height: 2.2;">
+                        <li><strong>Daily Bank Matching</strong> – Deposits matched to tenant ledgers instantly</li>
+                        <li><strong>Liability Reconciliation</strong> – Tenant account balances matched to bank balances</li>
+                        <li><strong>Compliance Reporting</strong> – State-required trust account reports generated automatically</li>
+                        <li><strong>Audit Readiness</strong> – Documentation organized for inspection or audit</li>
+                        <li><strong>Tenant Accounting</strong> – Track deposits, deductions, and return funds</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Automated Rent Flow -->
+    <div class="section">
+        <div class="container">
+            <h2>Automated Rent Collection & Matching</h2>
+            <p class="section-intro">From tenant payment to financial reporting—all automated with zero manual entry.</p>
+            
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="icon-lg">💰</div>
+                    <h4>Automated Rent Posting</h4>
+                    <p>Bank deposits automatically matched to tenant ledgers. Late fees and partial payments handled instantly.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-lg">📧</div>
+                    <h4>Payment Reminders</h4>
+                    <p>Automated tenant notifications for upcoming rent, late payments, and required actions.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-lg">🎯</div>
+                    <h4>Collections Tracking</h4>
+                    <p>Real-time visibility into collections rates by property, unit, and time period.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-lg">📋</div>
+                    <h4>Deductions Management</h4>
+                    <p>Security deposit deductions categorized and documented automatically for audit compliance.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-lg">📄</div>
+                    <h4>Documentation</h4>
+                    <p>Every transaction documented with supporting evidence for compliance and dispute resolution.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-lg">⚖️</div>
+                    <h4>Legal Compliance</h4>
+                    <p>Ensure compliance with state-specific trust account laws and tenant protection regulations.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tenant Accounting -->
+    <div class="section section-alt">
+        <div class="container">
+            <h2>Complete Tenant Accounting</h2>
+            <p class="section-intro">Manage tenant relationships with clarity and compliance.</p>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 1.5rem;">What's tracked automatically:</h4>
+                    <ul style="font-size: 1.05rem; line-height: 2.2;">
+                        <li>✓ Lease commencement and terms</li>
+                        <li>✓ Rent escalations and special terms</li>
+                        <li>✓ Security deposits and holding</li>
+                        <li>✓ Damage deductions and returns</li>
+                        <li>✓ Payment history and aging</li>
+                        <li>✓ Eviction and collections notices</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <img src="images/business.png" class="img-responsive" alt="Tenant Management">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="container">
+        <div class="cta-section">
+            <h3>Discover Your Automation Opportunities</h3>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                Let us analyze your current accounting process and show you exactly how DARES can streamline compliance and reporting.
+            </p>
+            <a href="#audit" class="btn-primary-cta" style="background: white; color: var(--primary-blue);">Schedule 20-Minute Call</a>
+        </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="section section-alt">
+        <div class="container">
+            <h2>What Property Managers Are Saying</h2>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="testimonial">
+                        <p>"Managing trust account reconciliation manually was a nightmare. With DARES, it's automatic. Our audits now take half the time."</p>
+                        <div class="testimonial-author">— Jennifer M., Property Manager, 45 units</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="testimonial">
+                        <p>"Owners love the unit-level P&Ls. They used to ask questions. Now they see exactly what each property earned. Trust increased 10x."</p>
+                        <div class="testimonial-author">— Thomas K., Regional PM, 200+ units</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="testimonial">
+                        <p>"Late rent used to get lost in the shuffle. Now DARES alerts us instantly. Collection rates improved 8%."</p>
+                        <div class="testimonial-author">— Amanda R., PM, Residential</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="testimonial">
+                        <p>"Compliance used to stress me out. State audit questions now answer themselves with DARES reports."</p>
+                        <div class="testimonial-author">— Robert C., Commercial Property Manager</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resources -->
+    <div class="section">
+        <div class="container">
+            <h2 style="text-align: center;">Free Property Management Resources</h2>
+            <div class="feature-list">
+                <div class="feature-item" style="cursor: pointer;">
+                    <div class="icon-lg">📋</div>
+                    <h4>Property Manager's Tax-Ready Books Checklist</h4>
+                    <p>Complete checklist of all account categories, documentation, and compliance items state regulators look for.</p>
+                    <p style="color: var(--accent-blue); font-weight: 600; margin-top: 1rem;">Download Now →</p>
+                </div>
+                <div class="feature-item" style="cursor: pointer;">
+                    <div class="icon-lg">📊</div>
+                    <h4>Unit-Level P&L Template</h4>
+                    <p>Excel template showing how to structure unit-level accounting for multiple properties.</p>
+                    <p style="color: var(--accent-blue); font-weight: 600; margin-top: 1rem;">Download Now →</p>
+                </div>
+                <div class="feature-item" style="cursor: pointer;">
+                    <div class="icon-lg">⚖️</div>
+                    <h4>State Trust Account Law Guide</h4>
+                    <p>Summary of trust account requirements in each state—what auditors look for during inspections.</p>
+                    <p style="color: var(--accent-blue); font-weight: 600; margin-top: 1rem;">Download Now →</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="construction.html" class="footer-link">For Contractors</a></li>
+                        <li><a href="property-management.html" class="footer-link">For Property Managers</a></li>
+                        <li><a href="how-it-works.html" class="footer-link">How It Works</a></li>
+                        <li><a href="pricing.html" class="footer-link">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#" class="footer-link">About Us</a></li>
+                        <li><a href="#" class="footer-link">Blog</a></li>
+                        <li><a href="#" class="footer-link">Careers</a></li>
+                        <li><a href="#" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#" class="footer-link">Tax-Ready Checklist</a></li>
+                        <li><a href="#" class="footer-link">Trust Account Guide</a></li>
+                        <li><a href="#" class="footer-link">Docs</a></li>
+                        <li><a href="login.html" class="footer-link">Portal</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#" class="footer-link">Privacy</a></li>
+                        <li><a href="#" class="footer-link">Terms</a></li>
+                        <li><a href="#" class="footer-link">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.2); margin-top: 2rem; padding-top: 2rem; text-align: center;">
+                <p>&copy; 2026 DARES. Financial Clarity Powered by Automation + Human Ingenuity</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+</body>
+</html>

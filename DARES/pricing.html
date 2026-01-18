@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DARES pricing: Tiered automation plans for construction and property management bookkeeping.">
+    <title>Pricing | DARES Automated Bookkeeping</title>
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet" media="screen">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #003d82;
+            --dark-blue: #001f3d;
+            --slate-gray: #4a5568;
+            --light-gray: #f7fafc;
+            --accent-blue: #0066cc;
+        }
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Lora', serif;
+            font-weight: 600;
+        }
+        
+        body {
+            color: #2d3748;
+        }
+        
+        .navbar-wrapper {
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 1rem 0;
+        }
+        
+        .nav-link {
+            color: var(--slate-gray) !important;
+            margin-left: 2rem;
+            font-weight: 500;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-blue) !important;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-alt {
+            background: var(--light-gray);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            position: relative;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+            border-color: var(--accent-blue);
+        }
+        
+        .pricing-card.featured {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured:hover {
+            border-color: white;
+        }
+        
+        .featured-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-blue);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-card.featured h3 {
+            color: white;
+        }
+        
+        .pricing-subtitle {
+            color: var(--slate-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .pricing-card.featured .pricing-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 1.5rem 0;
+            color: var(--primary-blue);
+        }
+        
+        .pricing-card.featured .price {
+            color: white;
+        }
+        
+        .price-period {
+            font-size: 1rem;
+            color: var(--slate-gray);
+        }
+        
+        .pricing-card.featured .price-period {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .features-list {
+            list-style: none;
+            padding: 1.5rem 0;
+            margin-bottom: 2rem;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .pricing-card.featured .features-list {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .features-list li {
+            padding: 0.8rem 0;
+            font-size: 0.95rem;
+            color: var(--slate-gray);
+        }
+        
+        .pricing-card.featured .features-list li {
+            color: rgba(255, 255, 255, 0.95);
+        }
+        
+        .features-list li:before {
+            content: "✓ ";
+            color: var(--accent-blue);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        .pricing-card.featured .features-list li:before {
+            color: #10b981;
+        }
+        
+        .cta-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+        
+        .pricing-card.featured .cta-btn {
+            background: white;
+            color: var(--primary-blue);
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+        }
+        
+        .comparison-table {
+            width: 100%;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        .comparison-table th {
+            background: var(--primary-blue);
+            color: white;
+            padding: 1.5rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .comparison-table td {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .check {
+            color: #10b981;
+            font-weight: bold;
+        }
+        
+        .cross {
+            color: #ef4444;
+        }
+        
+        .faq-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent-blue);
+        }
+        
+        .faq-item h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.8rem;
+            cursor: pointer;
+        }
+        
+        .faq-item p {
+            color: var(--slate-gray);
+            line-height: 1.6;
+        }
+        
+        footer {
+            background: var(--primary-blue);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-wrapper navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../"><strong style="color: var(--primary-blue);">DARES</strong></a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="nav-link" href="../#home">Home</a></li>
+                    <li><a class="nav-link" href="construction.html">For Contractors</a></li>
+                    <li><a class="nav-link" href="property-management.html">For Property Managers</a></li>
+                    <li><a class="nav-link" href="how-it-works.html">How It Works</a></li>
+                    <li><a class="nav-link" href="pricing.html">Pricing</a></li>
+                    <li><a class="nav-link" href="login.html">Portal</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="hero">
+        <div class="container">
+            <h1>Pricing Built for Growth</h1>
+            <p style="font-size: 1.2rem;">Simple, transparent pricing with no hidden fees. Scale up or down anytime.</p>
+        </div>
+    </div>
+
+    <!-- Pricing Plans -->
+    <div class="section">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--primary-blue); font-size: 2.5rem; margin-bottom: 0.5rem;">Choose Your Automation Plan</h2>
+            <p style="text-align: center; color: var(--slate-gray); font-size: 1.1rem; margin-bottom: 3rem;">All plans include monthly expert review and strategy call</p>
+            
+            <div class="pricing-grid">
+                <!-- Starter Plan -->
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <p class="pricing-subtitle">For small teams getting started</p>
+                    <div class="price">$299<span class="price-period">/month</span></div>
+                    <p style="color: var(--slate-gray); margin-bottom: 1.5rem;">Perfect for:</p>
+                    <ul class="features-list">
+                        <li>Daily transaction categorization</li>
+                        <li>Monthly reconciliation & review</li>
+                        <li>Real-time dashboard</li>
+                        <li>Up to 2 integrations</li>
+                        <li>1 monthly strategy call</li>
+                        <li>Email support</li>
+                    </ul>
+                    <p style="color: var(--slate-gray); font-size: 0.9rem; margin-bottom: 1.5rem;">
+                        <strong>Best for:</strong> Small contractors or 1-5 property portfolios
+                    </p>
+                    <button class="cta-btn">Get Started</button>
+                </div>
+
+                <!-- Growth Plan (Featured) -->
+                <div class="pricing-card featured">
+                    <div class="featured-badge">Most Popular</div>
+                    <h3>Growth</h3>
+                    <p class="pricing-subtitle">For scaling businesses</p>
+                    <div class="price">$599<span class="price-period">/month</span></div>
+                    <p style="margin-bottom: 1.5rem;">Everything in Starter, plus:</p>
+                    <ul class="features-list">
+                        <li>Automated payroll processing</li>
+                        <li>Bill.com payment integration</li>
+                        <li>Job costing reports</li>
+                        <li>Unlimited integrations</li>
+                        <li>WIP/unit-level reporting</li>
+                        <li>Priority phone support</li>
+                        <li>Quarterly business planning</li>
+                    </ul>
+                    <p style="font-size: 0.9rem; margin-bottom: 1.5rem;">
+                        <strong>Best for:</strong> Growing contractors or 5-25 property portfolios
+                    </p>
+                    <button class="cta-btn">Get Started</button>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <p class="pricing-subtitle">For large-scale operations</p>
+                    <div class="price">Custom<span class="price-period">/month</span></div>
+                    <p style="color: var(--slate-gray); margin-bottom: 1.5rem;">Everything in Growth, plus:</p>
+                    <ul class="features-list">
+                        <li>CFO-level reporting</li>
+                        <li>Multi-entity consolidation</li>
+                        <li>Custom reporting dashboards</li>
+                        <li>Dedicated account manager</li>
+                        <li>Monthly strategy meetings</li>
+                        <li>Tax optimization planning</li>
+                        <li>Custom integrations</li>
+                    </ul>
+                    <p style="color: var(--slate-gray); font-size: 0.9rem; margin-bottom: 1.5rem;">
+                        <strong>Best for:</strong> Large firms, 25+ properties or $10M+ revenue
+                    </p>
+                    <button class="cta-btn">Contact Sales</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- What's Included -->
+    <div class="section section-alt">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--primary-blue); font-size: 2.5rem; margin-bottom: 2rem;">Detailed Feature Comparison</h2>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th style="width: 35%;">Feature</th>
+                        <th style="text-align: center;">Starter</th>
+                        <th style="text-align: center;">Growth</th>
+                        <th style="text-align: center;">Enterprise</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Automated Categorization</strong></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Monthly Expert Review</strong></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Real-Time Dashboards</strong></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Monthly Strategy Call</strong></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Number of Integrations</strong></td>
+                        <td style="text-align: center;">2</td>
+                        <td style="text-align: center;">Unlimited</td>
+                        <td style="text-align: center;">Unlimited</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Payroll Processing</strong></td>
+                        <td style="text-align: center;"><span class="cross">—</span></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bill.com Payment Integration</strong></td>
+                        <td style="text-align: center;"><span class="cross">—</span></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Job/Unit-Level Reporting</strong></td>
+                        <td style="text-align: center;"><span class="cross">—</span></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>WIP Reports</strong></td>
+                        <td style="text-align: center;"><span class="cross">—</span></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Support Level</strong></td>
+                        <td style="text-align: center;">Email</td>
+                        <td style="text-align: center;">Phone</td>
+                        <td style="text-align: center;">Dedicated</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dedicated Account Manager</strong></td>
+                        <td style="text-align: center;"><span class="cross">—</span></td>
+                        <td style="text-align: center;"><span class="cross">—</span></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Custom Reporting</strong></td>
+                        <td style="text-align: center;"><span class="cross">—</span></td>
+                        <td style="text-align: center;"><span class="cross">—</span></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>CFO-Level Reporting</strong></td>
+                        <td style="text-align: center;"><span class="cross">—</span></td>
+                        <td style="text-align: center;"><span class="cross">—</span></td>
+                        <td style="text-align: center;"><span class="check">✓</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="section">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--primary-blue); font-size: 2.5rem; margin-bottom: 2rem;">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <h4>Can I change plans anytime?</h4>
+                <p>Yes! Upgrade or downgrade your plan anytime, with changes taking effect at the next billing cycle. No penalties or cancellation fees.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>What if my business grows significantly?</h4>
+                <p>As your business scales, you can upgrade to a higher tier or move to a custom Enterprise plan. We'll work with you to ensure your plan matches your needs.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Do you offer a free trial?</h4>
+                <p>We offer a free 20-minute consultation to discuss your needs and show you how DARES works. After that, you can start with a Starter plan on a month-to-month basis.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Are there setup fees?</h4>
+                <p>No setup or hidden fees. We include onboarding, integration setup, and your first month of service at your plan's monthly rate.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>What about year-end taxes?</h4>
+                <p>All plans include year-end tax preparation support and documentation. Enterprise plans include dedicated tax optimization planning.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Can I cancel anytime?</h4>
+                <p>Yes. We believe in month-to-month flexibility. Cancel anytime with 30 days notice. No contracts, no penalties.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="section section-alt">
+        <div class="container" style="text-align: center;">
+            <h2 style="color: var(--primary-blue); margin-bottom: 1.5rem;">Ready to Get Started?</h2>
+            <p style="font-size: 1.1rem; color: var(--slate-gray); margin-bottom: 2rem;">
+                Schedule your free 20-minute automation audit to see which plan is right for you.
+            </p>
+            <a href="../#audit" style="background: var(--accent-blue); color: white; padding: 14px 40px; border-radius: 6px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s;">
+                Schedule Free Consultation
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="construction.html" class="footer-link">For Contractors</a></li>
+                        <li><a href="property-management.html" class="footer-link">For Property Managers</a></li>
+                        <li><a href="how-it-works.html" class="footer-link">How It Works</a></li>
+                        <li><a href="pricing.html" class="footer-link">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#" class="footer-link">About Us</a></li>
+                        <li><a href="#" class="footer-link">Blog</a></li>
+                        <li><a href="#" class="footer-link">Careers</a></li>
+                        <li><a href="#" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#" class="footer-link">Documentation</a></li>
+                        <li><a href="#" class="footer-link">Support</a></li>
+                        <li><a href="#" class="footer-link">Blog</a></li>
+                        <li><a href="login.html" class="footer-link">Portal</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#" class="footer-link">Privacy</a></li>
+                        <li><a href="#" class="footer-link">Terms</a></li>
+                        <li><a href="#" class="footer-link">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.2); margin-top: 2rem; padding-top: 2rem; text-align: center;">
+                <p>&copy; 2026 DARES. Financial Clarity Powered by Automation + Human Ingenuity</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+</body>
+</html>
