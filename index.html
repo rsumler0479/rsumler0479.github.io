@@ -3,209 +3,345 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DARES - Automated Bookkeeping for Construction & Property Management. Expert accounting powered by AI and human insight.">
-    <title>DARES | Automated Bookkeeping for Builders & Property Managers</title>
+    <meta name="description" content="DARES - Expert Automated Bookkeeping for Builders & Property Managers. AI-powered accounting with human expertise.">
+    <title>DARES | Automated Bookkeeping for Contractors & Property Managers</title>
     
     <link href="DARES/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="DARES/css/font-awesome.min.css" rel="stylesheet">
     <link href="DARES/css/animate.css" rel="stylesheet" media="screen">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Lora:wght@400;600&display=swap" rel="stylesheet">
     
     <style>
-        :root {
-            --primary-blue: #1a3a52;
-            --light-blue: #2d5f8d;
-            --accent-blue: #0066cc;
-            --dark-gray: #333333;
-            --light-gray: #f5f7fa;
-            --border-gray: #e0e4e8;
-            --success: #10b981;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        * {
-            font-family: 'Inter', sans-serif;
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.6;
         }
 
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Lora', serif;
-            font-weight: 600;
-            color: var(--primary-blue);
-        }
-
-        body {
-            color: var(--dark-gray);
-            line-height: 1.6;
+            color: #1a3a52;
         }
 
         a {
-            color: var(--accent-blue);
-            text-decoration: none;
+            color: #0066cc;
+            transition: color 0.3s;
         }
 
         a:hover {
-            color: var(--light-blue);
+            color: #0052a3;
         }
 
-        /* Header & Navigation */
-        .navbar-wrapper {
+        /* Navigation */
+        .navbar {
             background: white;
-            border-bottom: 1px solid var(--border-gray);
+            border-bottom: 1px solid #e0e4e8;
             padding: 1rem 0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .navbar-brand {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--primary-blue) !important;
+            color: #1a3a52 !important;
             letter-spacing: -0.5px;
         }
 
         .nav-link {
-            color: var(--dark-gray) !important;
-            margin-left: 2.5rem;
+            color: #555 !important;
             font-weight: 500;
-            font-size: 0.95rem;
+            margin-left: 2rem;
             transition: color 0.3s;
         }
 
         .nav-link:hover {
-            color: var(--accent-blue) !important;
+            color: #0066cc !important;
         }
 
-        .nav-btn {
-            background: var(--primary-blue);
+        .btn-nav {
+            background: #1a3a52;
             color: white !important;
             padding: 0.6rem 1.5rem;
             border-radius: 6px;
-            margin-left: 2rem;
-            transition: background 0.3s;
+            margin-left: 1.5rem;
         }
 
-        .nav-btn:hover {
-            background: var(--light-blue);
+        .btn-nav:hover {
+            background: #0d1f2d;
+            color: white !important;
         }
 
-        /* Hero Section */
+        /* Hero Section with Background Image */
         .hero {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
-            color: white;
-            padding: 80px 0;
             position: relative;
+            height: 600px;
+            background: linear-gradient(rgba(26, 58, 82, 0.7), rgba(26, 58, 82, 0.7)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%231a3a52"/><stop offset="100%" style="stop-color:%232d5f8d"/></linearGradient></defs><rect width="1200" height="600" fill="url(%23grad)"/><circle cx="1000" cy="100" r="200" fill="rgba(255,255,255,0.05)"/><circle cx="100" cy="500" r="150" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
             overflow: hidden;
         }
 
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+        }
+
         .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1.2rem;
-            line-height: 1.3;
+            font-size: 3.2rem;
             color: white;
+            margin-bottom: 1rem;
+            line-height: 1.3;
             font-weight: 700;
         }
 
-        .hero-subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 2.5rem;
+        .hero p {
+            font-size: 1.3rem;
             color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2.5rem;
             line-height: 1.6;
         }
 
-        .cta-button {
-            display: inline-block;
-            padding: 12px 32px;
-            background: var(--accent-blue);
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: #0066cc;
             color: white;
+            padding: 12px 32px;
+            border: none;
             border-radius: 6px;
             font-weight: 600;
             font-size: 1rem;
+            cursor: pointer;
             transition: all 0.3s;
-            border: 2px solid var(--accent-blue);
-        }
-
-        .cta-button:hover {
-            background: white;
-            color: var(--accent-blue);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-        }
-
-        .cta-button-secondary {
+            text-decoration: none;
             display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #0052a3;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 102, 204, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #1a3a52;
             padding: 12px 32px;
+            border: 2px solid white;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
             background: transparent;
             color: white;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s;
-            border: 2px solid white;
-            margin-left: 1rem;
+            border-color: white;
         }
 
-        .cta-button-secondary:hover {
-            background: white;
-            color: var(--primary-blue);
+        /* Service Cards Carousel Section */
+        .service-carousel-section {
+            padding: 4rem 0;
+            background: #f5f7fa;
         }
 
-        /* Service Sections */
-        .service-section {
-            padding: 5rem 0;
-            border-bottom: 1px solid var(--border-gray);
+        .carousel-title {
+            text-align: center;
+            margin-bottom: 3rem;
         }
 
-        .service-section:nth-child(even) {
-            background: var(--light-gray);
+        .carousel-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
         }
 
-        .service-header {
-            margin-bottom: 2.5rem;
-        }
-
-        .service-header h2 {
-            font-size: 2rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .service-header p {
-            font-size: 1.1rem;
-            color: #666;
-        }
-
-        .service-grid {
+        .carousel-container {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             gap: 2rem;
-            margin-top: 2.5rem;
         }
 
-        .service-card {
+        .carousel-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            position: relative;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .carousel-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px);
+        }
+
+        .carousel-card-image {
+            height: 160px;
+            background: linear-gradient(135deg, #1a3a52, #2d5f8d);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .carousel-card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .carousel-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .carousel-card p {
+            font-size: 0.95rem;
+            color: #666;
+            flex-grow: 1;
+        }
+
+        .carousel-card-link {
+            color: #0066cc;
+            font-weight: 600;
+            margin-top: 1rem;
+            text-decoration: none;
+        }
+
+        .carousel-card-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Welcome Section */
+        .welcome-section {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .welcome-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .welcome-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .welcome-text h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .welcome-text p {
+            margin-bottom: 1.5rem;
+            color: #555;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .welcome-cta {
+            display: inline-block;
+            background: #1a3a52;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        .welcome-cta:hover {
+            background: #0d1f2d;
+            color: white;
+        }
+
+        .welcome-image {
+            height: 400px;
+            background: linear-gradient(135deg, #1a3a52, #2d5f8d);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: white;
+        }
+
+        /* Why Choose Us */
+        .why-choose-section {
+            padding: 4rem 0;
+            background: #f5f7fa;
+        }
+
+        .why-choose-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .why-choose-title h2 {
+            font-size: 2.2rem;
+        }
+
+        .why-choose-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .why-card {
             background: white;
             padding: 2rem;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s;
         }
 
-        .service-card:hover {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-            transform: translateY(-4px);
-        }
-
-        .service-card h3 {
-            font-size: 1.3rem;
+        .why-card h3 {
+            font-size: 1.1rem;
             margin-bottom: 1rem;
-            color: var(--primary-blue);
         }
 
-        .service-card p {
+        .why-card p {
             color: #666;
+            font-size: 0.95rem;
             line-height: 1.7;
         }
 
         /* Testimonials Section */
         .testimonials-section {
-            padding: 5rem 0;
+            padding: 4rem 0;
             background: white;
         }
 
@@ -215,21 +351,20 @@
         }
 
         .testimonials-header h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
+            font-size: 2.2rem;
         }
 
-        .testimonials-container {
+        .testimonials-grid {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             gap: 2rem;
         }
 
         .testimonial-card {
-            background: var(--light-gray);
-            padding: 2.5rem;
+            background: #f5f7fa;
+            padding: 2rem;
             border-radius: 8px;
-            border-left: 4px solid var(--accent-blue);
+            border-left: 4px solid #0066cc;
             transition: all 0.3s;
         }
 
@@ -239,12 +374,12 @@
 
         .testimonial-stars {
             color: #fbbf24;
-            font-size: 0.9rem;
             margin-bottom: 0.8rem;
+            font-size: 0.9rem;
         }
 
         .testimonial-text {
-            color: var(--dark-gray);
+            color: #333;
             font-size: 0.95rem;
             line-height: 1.7;
             margin-bottom: 1.5rem;
@@ -253,8 +388,7 @@
 
         .testimonial-author {
             font-weight: 600;
-            color: var(--primary-blue);
-            font-size: 0.95rem;
+            color: #1a3a52;
         }
 
         .testimonial-role {
@@ -264,23 +398,61 @@
 
         /* Blog Section */
         .blog-section {
-            padding: 5rem 0;
-            background: var(--light-gray);
+            padding: 4rem 0;
+            background: #f5f7fa;
         }
 
         .blog-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         .blog-header h2 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 0.5rem;
         }
 
-        .blog-header p {
-            font-size: 1.1rem;
-            color: #666;
+        .newsletter-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .newsletter-box h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-form input {
+            padding: 0.8rem 1rem;
+            border: 1px solid #e0e4e8;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+            min-width: 250px;
+        }
+
+        .newsletter-form button {
+            background: #1a3a52;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            background: #0d1f2d;
         }
 
         .blog-grid {
@@ -298,93 +470,45 @@
         }
 
         .blog-card:hover {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
             transform: translateY(-4px);
         }
 
         .blog-date {
             display: block;
-            padding: 1.5rem;
-            background: var(--light-gray);
+            padding: 1rem 1.5rem;
+            background: #e0e4e8;
             color: #999;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
         }
 
         .blog-content {
-            padding: 2rem;
+            padding: 1.5rem;
         }
 
         .blog-content h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
             line-height: 1.4;
-            color: var(--primary-blue);
         }
 
         .blog-content p {
             color: #666;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             line-height: 1.6;
             margin-bottom: 1rem;
         }
 
-        .read-more {
-            color: var(--accent-blue);
+        .blog-link {
+            color: #0066cc;
             font-weight: 600;
-            text-decoration: underline;
-            font-size: 0.95rem;
-        }
-
-        /* Newsletter Signup */
-        .newsletter-section {
-            padding: 3rem;
-            background: var(--primary-blue);
-            color: white;
-            border-radius: 8px;
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .newsletter-section h3 {
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .newsletter-form {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .newsletter-form input {
-            padding: 0.75rem 1rem;
-            border: none;
-            border-radius: 6px;
-            font-size: 0.95rem;
-            min-width: 250px;
-        }
-
-        .newsletter-form button {
-            padding: 0.75rem 2rem;
-            background: var(--accent-blue);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .newsletter-form button:hover {
-            background: #0052a3;
+            font-size: 0.9rem;
         }
 
         /* Contact Section */
         .contact-section {
-            padding: 5rem 0;
+            padding: 4rem 0;
             background: white;
         }
 
@@ -394,20 +518,19 @@
         }
 
         .contact-header h2 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 1rem;
         }
 
-        .contact-content {
+        .contact-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
-            align-items: start;
         }
 
-        .contact-form {
-            background: var(--light-gray);
-            padding: 2rem;
+        .contact-form-box {
+            background: #f5f7fa;
+            padding: 2.5rem;
             border-radius: 8px;
         }
 
@@ -419,33 +542,34 @@
             display: block;
             font-weight: 600;
             margin-bottom: 0.5rem;
-            color: var(--primary-blue);
+            color: #1a3a52;
+            font-size: 0.9rem;
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
             padding: 0.8rem;
-            border: 1px solid var(--border-gray);
+            border: 1px solid #e0e4e8;
             border-radius: 6px;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
             font-size: 0.95rem;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
+            transition: border-color 0.3s;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--accent-blue);
-            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+            border-color: #0066cc;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
         }
 
         .form-submit {
-            background: var(--primary-blue);
+            background: #1a3a52;
             color: white;
             padding: 0.8rem 2rem;
             border: none;
@@ -453,44 +577,51 @@
             font-weight: 600;
             cursor: pointer;
             transition: background 0.3s;
-            width: 100%;
             font-size: 1rem;
+            width: 100%;
         }
 
         .form-submit:hover {
-            background: var(--light-blue);
+            background: #0d1f2d;
         }
 
-        .contact-info {
+        .contact-info-box {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            justify-content: flex-start;
+        }
+
+        .contact-info-item {
+            margin-bottom: 3rem;
         }
 
         .contact-info-item h3 {
             font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
         }
 
         .contact-info-item p {
             color: #666;
-            line-height: 1.6;
+            line-height: 1.8;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
         }
 
         .contact-phone {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--primary-blue);
+            color: #1a3a52;
+            margin-top: 0.5rem;
         }
 
         /* Footer */
         footer {
-            background: var(--primary-blue);
+            background: #1a3a52;
             color: white;
             padding: 3rem 0 1.5rem 0;
         }
 
-        .footer-content {
+        .footer-grid {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr;
             gap: 2rem;
@@ -498,14 +629,14 @@
         }
 
         .footer-column h4 {
-            color: white;
-            margin-bottom: 1rem;
             font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            color: white;
         }
 
         .footer-column ul {
             list-style: none;
-            padding: 0;
         }
 
         .footer-column ul li {
@@ -514,6 +645,7 @@
 
         .footer-column a {
             color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
             transition: color 0.3s;
         }
 
@@ -532,6 +664,7 @@
         .social-links {
             display: flex;
             gap: 1rem;
+            justify-content: center;
             margin-top: 1rem;
         }
 
@@ -543,61 +676,50 @@
             justify-content: center;
             background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
+            color: white;
             transition: background 0.3s;
         }
 
         .social-links a:hover {
-            background: var(--accent-blue);
+            background: #0066cc;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .navbar-brand {
-                font-size: 1.2rem;
-            }
-
-            .nav-link {
-                margin-left: 1rem;
-                font-size: 0.85rem;
-            }
-
-            .nav-btn {
-                margin-left: 1rem;
-                padding: 0.5rem 1rem;
-            }
-
             .hero h1 {
                 font-size: 2rem;
             }
 
-            .hero-subtitle {
+            .hero p {
                 font-size: 1rem;
             }
 
-            .cta-button,
-            .cta-button-secondary {
-                padding: 10px 24px;
-                font-size: 0.9rem;
+            .hero-buttons {
+                flex-direction: column;
             }
 
-            .cta-button-secondary {
-                margin-left: 0;
-                margin-top: 1rem;
-                display: block;
+            .btn-primary, .btn-secondary {
+                width: 100%;
             }
 
-            .service-grid,
-            .testimonials-container,
-            .blog-grid {
+            .carousel-container,
+            .testimonials-grid,
+            .blog-grid,
+            .footer-grid {
                 grid-template-columns: 1fr;
             }
 
-            .contact-content {
+            .welcome-content,
+            .contact-wrapper {
                 grid-template-columns: 1fr;
             }
 
-            .footer-content {
-                grid-template-columns: 1fr 1fr;
+            .why-choose-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-link {
+                margin-left: 1rem;
             }
 
             .newsletter-form {
@@ -612,95 +734,148 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-wrapper">
+    <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="#home">DARES</a>
             </div>
-            <div class="collapse navbar-collapse" id="navbar-menu">
+            <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a class="nav-link" href="#services">Services</a></li>
+                    <li><a class="nav-link" href="#about">About</a></li>
+                    <li><a class="nav-link" href="#why">Why Us</a></li>
                     <li><a class="nav-link" href="DARES/how-it-works.html">How It Works</a></li>
                     <li><a class="nav-link" href="DARES/pricing.html">Pricing</a></li>
-                    <li><a class="nav-link" href="#testimonials">Why Us</a></li>
-                    <li><a class="nav-link nav-btn" href="DARES/login.html">Portal</a></li>
+                    <li><a class="nav-link btn-nav" href="DARES/login.html">Portal</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Financial Clarity for Builders & Property Owners</h1>
-            <p class="hero-subtitle">Expert bookkeeping powered by automation and human insight. Let us handle your financials so you can focus on your business.</p>
-            <div>
-                <a href="#contact" class="cta-button">Get Started</a>
-                <a href="DARES/how-it-works.html" class="cta-button-secondary">Learn How It Works</a>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Trusted Automated Bookkeeping for Builders & Property Owners</h1>
+            <p>Expert accounting powered by AI and human expertise. Let us handle your financials so you can focus on growing your business.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">Explore Services</a>
+                <a href="DARES/how-it-works.html" class="btn-secondary">Learn How It Works</a>
             </div>
         </div>
     </section>
 
-    <!-- Services Sections -->
-    <section class="service-section" id="services">
+    <!-- Service Carousel Sections -->
+    <section class="service-carousel-section" id="services">
         <div class="container">
-            <div class="service-header">
-                <h2>For Contractors</h2>
-                <p>Specialized bookkeeping solutions designed for construction firms</p>
+            <div class="carousel-title">
+                <h2>Leave Your Back Office to Us</h2>
+                <p style="color: #666; margin-top: 0.5rem;">Focus on your business while we handle the numbers</p>
             </div>
-            <div class="service-grid">
-                <div class="service-card">
-                    <h3><i class="fa fa-calculator"></i> Job Costing</h3>
-                    <p>Real-time job profitability tracking with automated cost allocation and margin analysis.</p>
+            <div class="carousel-container">
+                <div class="carousel-card">
+                    <div class="carousel-card-image">
+                        <i class="fa fa-calculator"></i>
+                    </div>
+                    <div class="carousel-card-content">
+                        <h3>Job Costing & Analysis</h3>
+                        <p>Real-time project profitability tracking with automated cost allocation for every job.</p>
+                        <a href="DARES/construction.html" class="carousel-card-link">Learn More →</a>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <h3><i class="fa fa-bar-chart"></i> WIP Reports</h3>
-                    <p>Work-in-progress financial visibility for every active project with variance analysis.</p>
+
+                <div class="carousel-card">
+                    <div class="carousel-card-image">
+                        <i class="fa fa-bar-chart"></i>
+                    </div>
+                    <div class="carousel-card-content">
+                        <h3>We Do Accounting Very Well</h3>
+                        <p>Comprehensive bookkeeping services with audit-ready financial statements and tax optimization.</p>
+                        <a href="DARES/property-management.html" class="carousel-card-link">Learn More →</a>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <h3><i class="fa fa-users"></i> Subcontractor Management</h3>
-                    <p>Automated payments, 1099 generation, and vendor performance tracking.</p>
+
+                <div class="carousel-card">
+                    <div class="carousel-card-image">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <div class="carousel-card-content">
+                        <h3>Each Business is Different</h3>
+                        <p>Customized solutions tailored to your specific industry needs and business challenges.</p>
+                        <a href="#contact" class="carousel-card-link">Get Started →</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="service-section">
+    <!-- Welcome Section -->
+    <section class="welcome-section" id="about">
         <div class="container">
-            <div class="service-header">
-                <h2>For Property Managers</h2>
-                <p>Comprehensive accounting for multi-property operations</p>
+            <div class="welcome-header">
+                <h2>Welcome to DARES</h2>
             </div>
-            <div class="service-grid">
-                <div class="service-card">
-                    <h3><i class="fa fa-building"></i> Unit-Level Reporting</h3>
-                    <p>Individual property P&Ls with owner distribution and performance benchmarking.</p>
+            <div class="welcome-content">
+                <div>
+                    <h3>We Offer a Full Range of Automated Bookkeeping Services</h3>
+                    <p>DARES combines cutting-edge automation technology with expert human accountants to deliver bookkeeping solutions you can trust. We serve construction companies and property management firms across multiple states.</p>
+                    <p>Our specialized approach handles job costing, WIP reporting, unit-level analysis, trust account reconciliation, and complete tax preparation. With over two decades of combined experience, we understand the unique financial challenges your business faces.</p>
+                    <p>Known for our hands-on approach, we build long-term client relationships rooted in trust, responsiveness, and expertise. Whether you're streamlining operations or addressing complex tax matters, DARES delivers smart, reliable solutions tailored to your needs.</p>
+                    <a href="#contact" class="welcome-cta">Get in Touch</a>
                 </div>
-                <div class="service-card">
-                    <h3><i class="fa fa-lock"></i> Trust Account Management</h3>
-                    <p>Automated reconciliation and compliance tracking for escrow accounts.</p>
+                <div class="welcome-image">
+                    <i class="fa fa-briefcase"></i>
                 </div>
-                <div class="service-card">
-                    <h3><i class="fa fa-money"></i> Rent & Deduction Tracking</h3>
-                    <p>Automated rent posting, payment tracking, and tenant accounting.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-choose-section" id="why">
+        <div class="container">
+            <div class="why-choose-title">
+                <h2>Why Choose DARES?</h2>
+            </div>
+            <div class="why-choose-grid">
+                <div class="why-card">
+                    <h3><i class="fa fa-check"></i> Automation + Human Expertise</h3>
+                    <p>AI handles 80% of categorization, expert accountants review everything. It's not just software—it's a partnership.</p>
+                </div>
+                <div class="why-card">
+                    <h3><i class="fa fa-lock"></i> Bank-Level Security</h3>
+                    <p>SOC 2 compliant, encrypted data, and dedicated security protocols to protect your financial information.</p>
+                </div>
+                <div class="why-card">
+                    <h3><i class="fa fa-plug"></i> 1-Click Integrations</h3>
+                    <p>Connect QuickBooks, Xero, Bill.com, AppFolio, Procore, and 50+ other platforms seamlessly.</p>
+                </div>
+                <div class="why-card">
+                    <h3><i class="fa fa-phone"></i> Monthly Strategy Calls</h3>
+                    <p>Every month, discuss your financials with your dedicated accountant and get tax planning advice.</p>
+                </div>
+                <div class="why-card">
+                    <h3><i class="fa fa-tachometer"></i> Real-Time Dashboards</h3>
+                    <p>See your financials updated daily. Know your cash position, profit margins, and key metrics instantly.</p>
+                </div>
+                <div class="why-card">
+                    <h3><i class="fa fa-calendar"></i> Tax-Ready by January 31</h3>
+                    <p>All books are reconciled and audit-ready before tax season even begins.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials-section" id="testimonials">
+    <section class="testimonials-section">
         <div class="container">
             <div class="testimonials-header">
                 <h2>See Why Our Clients Love Us</h2>
-                <p>Real results from construction and property management professionals</p>
             </div>
-            <div class="testimonials-container">
+            <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <div class="testimonial-stars">
                         <i class="fa fa-star"></i>
@@ -709,7 +884,7 @@
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
                     </div>
-                    <p class="testimonial-text">"DARES transformed how we manage job profitability. We now catch cost overruns before they become problems. Our margins have improved by 8% in just one year."</p>
+                    <p class="testimonial-text">"DARES transformed how we manage job profitability. We caught cost overruns before they became disasters. Our margins improved 8% in one year."</p>
                     <p class="testimonial-author">Mike Thompson</p>
                     <p class="testimonial-role">Founder, Thompson Construction</p>
                 </div>
@@ -724,7 +899,7 @@
                     </div>
                     <p class="testimonial-text">"Managing 12 properties was a nightmare. DARES gave us unit-level clarity instantly. Tax time is now straightforward instead of chaotic."</p>
                     <p class="testimonial-author">Sarah Chen</p>
-                    <p class="testimonial-role">PM Director, Pinnacle Properties</p>
+                    <p class="testimonial-role">Director, Pinnacle Properties</p>
                 </div>
 
                 <div class="testimonial-card">
@@ -735,7 +910,7 @@
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
                     </div>
-                    <p class="testimonial-text">"The automation is incredible, but having a real accountant review everything gives us confidence. It's not just software—it's a partnership."</p>
+                    <p class="testimonial-text">"The automation is incredible, but having a real accountant review everything gives us confidence. It's not just software—it's a true partnership."</p>
                     <p class="testimonial-author">David Rosenberg</p>
                     <p class="testimonial-role">Owner, Heritage Homes</p>
                 </div>
@@ -743,48 +918,47 @@
         </div>
     </section>
 
-    <!-- Blog/Resources Section -->
+    <!-- Blog Section -->
     <section class="blog-section">
         <div class="container">
             <div class="blog-header">
-                <h2>Financial Insights</h2>
-                <p>Stay informed with expert advice on construction and property management accounting</p>
+                <h2>Financial News You Can Use</h2>
+                <p>Get weekly articles in your inbox on how to help you grow and succeed.</p>
             </div>
 
-            <div class="newsletter-section">
-                <h3>Get Weekly Insights</h3>
-                <p>Subscribe to our newsletter for timely tax tips and accounting best practices</p>
+            <div class="newsletter-box">
+                <h3>Subscribe to Our Newsletter</h3>
                 <form class="newsletter-form">
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit">Subscribe</button>
+                    <input type="email" placeholder="Email address" required>
+                    <button type="submit">Notify me</button>
                 </form>
             </div>
 
             <div class="blog-grid">
                 <div class="blog-card">
-                    <span class="blog-date">January 18, 2026</span>
+                    <span class="blog-date">01/20/2026</span>
                     <div class="blog-content">
                         <h3>The Top 5 Financial Metrics Every Contractor Must Track</h3>
-                        <p>Understanding your key performance indicators is essential for sustainable growth. Learn which metrics matter most...</p>
-                        <a href="#" class="read-more">Read Full Story →</a>
+                        <p>Understanding your KPIs is essential for sustainable growth. Learn which metrics matter most...</p>
+                        <a href="#" class="blog-link">Read full story →</a>
                     </div>
                 </div>
 
                 <div class="blog-card">
-                    <span class="blog-date">January 15, 2026</span>
+                    <span class="blog-date">01/18/2026</span>
                     <div class="blog-content">
                         <h3>Trust Account Compliance: What Property Managers Need to Know</h3>
-                        <p>New regulations are coming. Make sure your escrow accounts are audit-ready and compliant with state requirements...</p>
-                        <a href="#" class="read-more">Read Full Story →</a>
+                        <p>New regulations are coming. Make sure your escrow accounts are audit-ready and compliant...</p>
+                        <a href="#" class="blog-link">Read full story →</a>
                     </div>
                 </div>
 
                 <div class="blog-card">
-                    <span class="blog-date">January 12, 2026</span>
+                    <span class="blog-date">01/15/2026</span>
                     <div class="blog-content">
                         <h3>Tax Deductions Construction Firms Miss Every Year</h3>
-                        <p>Are you leaving money on the table? Discover 7 common deductions that contractors overlook during tax prep...</p>
-                        <a href="#" class="read-more">Read Full Story →</a>
+                        <p>Are you leaving money on the table? Discover 7 deductions contractors overlook...</p>
+                        <a href="#" class="blog-link">Read full story →</a>
                     </div>
                 </div>
             </div>
@@ -795,60 +969,61 @@
     <section class="contact-section" id="contact">
         <div class="container">
             <div class="contact-header">
-                <h2>Get in Touch with DARES</h2>
-                <p>Ready to transform your bookkeeping? Let's talk about how we can help.</p>
+                <h2>Get In Touch With DARES</h2>
+                <p>At DARES, we're committed to delivering timely and reliable solutions for your accounting needs.</p>
             </div>
 
-            <div class="contact-content">
-                <div class="contact-form">
+            <div class="contact-wrapper">
+                <div class="contact-form-box">
                     <form>
                         <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" required>
+                            <label>First Name</label>
+                            <input type="text" required>
                         </div>
                         <div class="form-group">
-                            <label for="company">Company</label>
-                            <input type="text" id="company" name="company" required>
+                            <label>Last Name</label>
+                            <input type="text" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
+                            <label>Email</label>
+                            <input type="email" required>
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" required>
+                            <label>Phone Number</label>
+                            <input type="tel" required>
                         </div>
                         <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" required></textarea>
+                            <label>Message</label>
+                            <textarea required></textarea>
                         </div>
-                        <button type="submit" class="form-submit">Send Message</button>
+                        <button type="submit" class="form-submit">Submit</button>
                     </form>
                 </div>
 
-                <div class="contact-info">
-                    <div>
+                <div class="contact-info-box">
+                    <div class="contact-info-item">
                         <h3>Questions?</h3>
-                        <p>Our team is ready to discuss how DARES can improve your accounting.</p>
+                        <p>Our team is ready to discuss how DARES can improve your accounting and boost your bottom line.</p>
                     </div>
-                    <div>
+
+                    <div class="contact-info-item">
                         <h3>Phone</h3>
                         <p class="contact-phone">(555) 123-4567</p>
                         <p>Available Monday-Friday, 9am-5pm EST</p>
                     </div>
-                    <div>
-                        <h3>Industries We Serve</h3>
+
+                    <div class="contact-info-item">
+                        <h3>We Serve</h3>
                         <p>
                             • Construction Companies<br>
                             • Property Management Firms<br>
-                            • Real Estate Development<br>
+                            • Real Estate Developers<br>
                             • Specialty Contractors
                         </p>
                     </div>
-                    <div>
-                        <h3>Get Started</h3>
-                        <p>Schedule a free consultation to see how DARES can streamline your operations.</p>
-                        <a href="#" class="cta-button" style="display: inline-block;">Schedule Now</a>
+
+                    <div class="contact-info-item">
+                        <a href="#" class="btn-primary">Schedule a Call</a>
                     </div>
                 </div>
             </div>
@@ -858,7 +1033,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-grid">
                 <div class="footer-column">
                     <h4>Product</h4>
                     <ul>
@@ -887,7 +1062,7 @@
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h4>Legal</h4>
+                    <h4>Information</h4>
                     <ul>
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Terms of Service</a></li>
@@ -896,12 +1071,13 @@
                     </ul>
                 </div>
             </div>
+
             <div class="footer-bottom">
                 <p>&copy; 2026 DARES - Automated Bookkeeping. All rights reserved.</p>
                 <div class="social-links">
+                    <a href="#" title="Twitter"><i class="fa fa-twitter"></i></a>
                     <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a>
                     <a href="#" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
-                    <a href="#" title="Twitter"><i class="fa fa-twitter"></i></a>
                 </div>
             </div>
         </div>
